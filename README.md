@@ -34,6 +34,12 @@ Diagram of the database for SnuggleStop
 ## Features
 
 ## Tech Stack
+- Postgres
+- Tailwind CSS
+- Typescript
+- React.js
+- Express.js
+- Node.js
 
 ## Project Structure
 

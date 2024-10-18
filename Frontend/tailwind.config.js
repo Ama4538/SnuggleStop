@@ -10,19 +10,22 @@ export default {
                 background: {
                     DEFAULT: `#fffeff`,
                 },
-                text: {
-                    DEFAULT: `#030002`,
-                },
                 primary: {
-                    DEFAULT: `#e2afbd`,
+                    DEFAULT: `#589a81`,
                 },
                 secondary: {
-                    DEFAULT: `#89b8bd`,
+                    DEFAULT: `#e3e98f`,
+                },
+                accent: {
+                    DEFAULT: `#e0eee9`
                 }
             },
             fontFamily: {
                 title: [`Inter Tight`, `sans-serif`],
                 text: ['Nunito', 'sans-serif'],
+            },
+            backgroundSize: {
+                '60%': '60%',
             },
         },
     },

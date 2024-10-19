@@ -24,9 +24,6 @@ export default {
                 title: [`Inter Tight`, `sans-serif`],
                 text: ['Nunito', 'sans-serif'],
             },
-            backgroundSize: {
-                '60%': '60%',
-            },
         },
     },
     plugins: [],

@@ -48,3 +48,6 @@ Diagram of the database for SnuggleStop
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
+
+Credit
+https://unsplash.com/photos/brown-scottish-fold-in-brown-thick-pile-blanket-NodtnCsLdTE

@@ -1,5 +1,5 @@
 // Icons
-import SearchIcon from "./icons/SearchIcon.tsx";
+import SearchIcon from "./icons/default/SearchIcon.tsx";
 
 const Searchbar = () => {
     return (

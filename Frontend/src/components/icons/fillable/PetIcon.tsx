@@ -1,11 +1,14 @@
-const PetIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+// Props
+import { FillableIconProps } from "../IconProps.ts";
+
+const PetIcon: React.FC<FillableIconProps> = ({ isFilled, fill, stroke, strokeWidth, height, ...props }) => {
     return (
         <svg
             {...props}
-            fill={props.fill || "none"}
-            stroke={props.stroke || "#589a81"}
-            strokeWidth={props.strokeWidth || 30}
-            height={props.height || "250px"}
+            fill={isFilled ? '#589a81' : fill || "none"}
+            stroke={stroke || "#589a81"}
+            strokeWidth={strokeWidth || 30}
+            height={height || "250px"}
             viewBox="0 0 512 512"
             xmlns="http://www.w3.org/2000/svg"
             className="aspect-square"

@@ -5,7 +5,7 @@ const CategoryIcon: React.FC<FillableIconProps> = ({ isFilled, fill, stroke, str
     return (
         <svg
             {...props}
-            fill={isFilled ? '#589a81' : fill || "none"}
+            fill={isFilled ? fill || '#589a81' : fill || "none"}
             height={height || "250px"}
             stroke={stroke || "#589a81"}
             strokeWidth={strokeWidth || 3}

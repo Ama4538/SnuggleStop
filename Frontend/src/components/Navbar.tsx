@@ -76,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ location }) => {
                             onClick={() => { setMenuActive(!menuActive) }}
                         > <CancelIcon height='100%' fill='#fffeff' /></button>
                     </div>
-                    <ul className="text-xl h-full font-medium font-text flex flex-col gap-1 px-2 py-3.5">
+                    <ul className="text-lg h-full font-medium font-text flex flex-col gap-1.5 px-2 py-3.5">
                         {navElements.map((element, index) => (
                             <li
                                 className={`last:border-b-0 py-1 px-1 whitespace-nowrap ${index === 6 ? 'mt-auto' : ''}`}

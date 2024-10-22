@@ -5,7 +5,7 @@ const PetIcon: React.FC<FillableIconProps> = ({ isFilled, fill, stroke, strokeWi
     return (
         <svg
             {...props}
-            fill={isFilled ? '#589a81' : fill || "none"}
+            fill={isFilled ? fill || '#589a81' : fill || "none"}
             stroke={stroke || "#589a81"}
             strokeWidth={strokeWidth || 30}
             height={height || "250px"}

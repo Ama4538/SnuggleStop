@@ -11,14 +11,14 @@ interface BarChartProps {
 
 Chart.register(CategoryScale, LinearScale, BarElement, Tooltip, ChartDataLabels);
 
-const BarChart: React.FC<BarChartProps> = ({ data, labels }) => {
+const BarChart: React.FC<BarChartProps> = ({ data, labels}) => {
     const barData = {
         labels: labels,
         datasets: [
             {
                 label: 'Supply Levels',
                 data: data,
-                backgroundColor: ['#98c6c7', '#92bfa4', '#b0c492', '#abcba1', '#cf959e'],
+                backgroundColor: ['#98c6c7', '#92bfa4', '#b0c492', '#abcba1', '#c0d2b8'],
                 borderColor: '#3f6f65',
                 borderWidth: 0,
                 barPercentage: 1

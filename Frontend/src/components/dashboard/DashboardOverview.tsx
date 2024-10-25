@@ -60,8 +60,8 @@ const DashboardOverview: React.FC<DashboardOverview> = ({
                     : <h4 className="stats-heading">No Data Present</h4>
                 }
             </article>
-            <h4 className="stats-heading">Recent Adoptions Activity</h4>
             <div>
+                <h4 className="stats-heading pb-3">Recent Adoptions Activity</h4>
                 {adoptionActivityArray.length > 0 ? (
                     <>
                         <span className='px-2 pl-8 flex-1 flex justify-between items-center gap-2 font-semibold text-sm text-center'>
@@ -71,13 +71,17 @@ const DashboardOverview: React.FC<DashboardOverview> = ({
                             <span className="flex-[1.25]">Status</span>
                         </span>
                         <ul className="flex flex-col gap-2">
-                            {adoptionActivityArray.map((activity, index) => (
-                                <LongDataCard
-                                    key={`adoption-activity-recent-${index}`}
-                                    item={activity}
-                                    Icon={PetIcon}
-                                />
-                            ))}
+                            {adoptionActivityArray.map((activity, index) => {
+                                const activityData = [activity.getDate(), activity.getName(), activity.getAdopterName(), activity.getStatus()]
+                                return (
+                                    <LongDataCard
+                                        key={`adoption-activity-recent-${index}`}
+                                        type={'adoptionActivity'}
+                                        data={activityData}
+                                        Icon={PetIcon}
+                                    />
+                                )
+                            })}
                         </ul>
                     </>
                 ) : (

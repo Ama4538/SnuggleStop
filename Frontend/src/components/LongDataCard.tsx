@@ -1,22 +1,24 @@
 // icons
 import { FillableIconProps } from "./icons/IconProps";
 
-// Modules
-import { Activity } from "./modules/Activity.ts";
+// Interface 
+interface LongDataCard {
+    type: string;
+    data: string[];
+    Icon: React.FC<FillableIconProps>
+    alt?: boolean;
+}
 
-const LongDataCard: React.FC<{ item: Activity, Icon: React.FC<FillableIconProps> }> = ({ item, Icon }) => {
-    const currentData = item.getDetail();
-    const dataType = item.constructor.name;
-    
+const LongDataCard: React.FC<LongDataCard> = ({ type, data, Icon, alt = false }) => {
     return (
-        <li className="flex bg-primary bg-opacity-90 text-background px-2 py-1.5 rounded-md h-9">
-            <Icon height={'100%'} isFilled={true} fill={'#fffeff'} />
+        <li className={`${alt ? 'bg-accent text-primary' : 'bg-primary bg-opacity-90 text-background'} flex px-2 py-1.5 rounded-md h-9`}>
+            <Icon height={'100%'} isFilled={false} fill={alt ? '' : '#fffeff'} />
             <span className={`flex-1 flex justify-between items-center gap-2 text-center`}>
-                {currentData.map((detail, index) => {
+                {data.map((detail, index) => {
                     return (
                         <span
-                            key={`LongDataCard-${dataType}-${index}-${detail}`}
-                            className={`overflow-hidden text-ellipsis first:flex-[0.85] last:flex-[1.25] ${index === 1 ? 'flex-[1.25]' : 'flex-1'}`}
+                            key={`LongDataCard-${type}-${index}-${detail}`}
+                            className={`overflow-hidden text-ellipsis whitespace-nowrap first:flex-[0.85] last:flex-[1.25] ${index === 1 ? 'flex-[1.25]' : 'flex-1'}`}
                         >{detail}</span>
                     )
                 })}

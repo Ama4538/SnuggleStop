@@ -1,34 +1,63 @@
 class Activity {
     date: string;
-    status: string;
-    
-    constructor(date: string, status: string) {
+    name: string;
+
+    constructor(date: string, name: string) {
         this.date = date;
-        this.status = status;
+        this.name = name;
     }
 
-    getDetail() {
-        return [this.date, this.status];
+    getDate() {
+        return this.date
+    }
+
+    getName() {
+        return this.name;
     }
 }
 
 class AdoptionActivity extends Activity {
-    petName: string;
     adopterName: string;
+    status: string;
 
-    constructor(date: string, petName: string, adopterName: string, status: string) {
-        super(date, status)
-        this.petName = petName;
+    constructor(date: string, name: string, adopterName: string, status: string) {
+        super(date ,name)
         this.adopterName = adopterName;
+        this.status = status;
     }
 
-    getDetail() {
-        return [this.date, this.petName, this.adopterName, this.status];
+    getAdopterName() {
+        return this.adopterName
     }
+
+    getStatus() {
+        return this.status;
+    }
+}
+
+class PetArrivalActivity extends Activity {
+    species: string;
+    breed: string;
+
+    constructor(date: string, name: string, species: string, breed: string) {
+        super(date, name)
+        this.species = species;
+        this.breed = breed;
+    }
+
+    getSpecies() {
+        return this.species
+    }
+
+    getBreed() {
+        return this.breed;
+    }
+
 }
 
 export {
     Activity,
-    AdoptionActivity
+    AdoptionActivity,
+    PetArrivalActivity
 };
 

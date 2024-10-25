@@ -9,11 +9,11 @@ import DashboardOverview from "../components/dashboard/DashboardOverview.tsx";
 import DashbardPets from "../components/dashboard/DashboardPets.tsx";
 
 // Modules
-import { AdoptionActivity } from "../components/modules/Activity.ts";
+import { AdoptionActivity, PetArrivalActivity } from "../components/modules/Activity.ts";
 import { Item } from "../components/modules/Item.ts";
 
 // Represent all tabs
-const tabElement: string[] = ['overview', 'pets', 'suppliers']
+const tabElement: string[] = ['overview', 'pets', 'supplies']
 
 const Dashboard = () => {
     // States
@@ -36,8 +36,8 @@ const Dashboard = () => {
     const [ageDistributionData, setAgeDistributionData] = useState<number[]>([]);
     const [ageDistributionLabel, setAgeDistributionLabel] = useState<string[]>([]);
     const [genderDistributionData, setGenderDistributionData] = useState<number[]>([]);
-    const [genderDistributionLabel, setGenderDistributionLabel] = useState<string[]>([]);
     const [petAvgPriceArray, setPetAvgPriceArray] = useState<Item[]>([]);
+    const [petArrivalActivityArray, setPetArrivalActivityArray] = useState<PetArrivalActivity[]>([]);
 
     // Manage the active tab
     const [activeTab, setActiveTab] = useState<string>('overview');
@@ -53,9 +53,9 @@ const Dashboard = () => {
         setPetDistributionLabel(['Dogs', 'Cats', 'Birds', 'Fish', 'Others']);
         setSupplyDistributionData([28, 41, 37, 15, 22, 17, 39])
         setSupplyDistributionLabel(['Food', 'Toys', 'Health', 'Bedding', 'Cleaning', 'Grooming', 'Other'])
-        const adoptionActivity1 = new AdoptionActivity('Betty', 'Jack', 'Pending', '10/22');
-        const adoptionActivity2 = new AdoptionActivity('Alliesander', 'Kevin', 'Complete', '9/22');
-        const adoptionActivity3 = new AdoptionActivity('Kevina', 'Allie', 'Pending', '6/19');
+        const adoptionActivity1 = new AdoptionActivity('10/22', 'Betty', 'Jack', 'Pending' );
+        const adoptionActivity2 = new AdoptionActivity('9/22', 'Alliesander', 'Kevin', 'Complete');
+        const adoptionActivity3 = new AdoptionActivity('6/19', 'Kevina', 'Allie', 'Pending' );
         setAdoptionActivityArray([adoptionActivity1, adoptionActivity2, adoptionActivity3]);
         const item1 = new Item('Food', 0, 0, 10);
         const item2 = new Item('Toys', 0, 0, 11);
@@ -65,15 +65,19 @@ const Dashboard = () => {
         // Pets
         setTotalSpecies(10)
         setTotalBreed(15)
-        setAdoptionStatusDistributionData([10, 15, 20, 46])
+        setAdoptionStatusDistributionData([10, 15, 46])
         setAgeDistributionData([10, 15, 27, 2, 3])
         setAgeDistributionLabel(['0-1', '2-4', '5-7', '8-10', '10+'])
         setGenderDistributionData([24, 16])
-        setGenderDistributionLabel(['Male', 'Female'])
         const pet1 = new Item('Dogs', 525.5)
         const pet2 = new Item('Cats', 235.79)
-        const pet3 = new Item('Fish', 525.5)
+        const pet3 = new Item('Fish', 25.5)
         setPetAvgPriceArray([pet1, pet2, pet3])
+        const petArrivalActivity1 = new PetArrivalActivity('10/25', 'Betty', 'Dog', 'Golden Retriver');
+        const petArrivalActivity2 = new PetArrivalActivity('10/21', 'James the destroyer', 'Dog', 'Husky');
+        const petArrivalActivity3 = new PetArrivalActivity('10/20', 'Alex', 'Cat', 'Mancoon');
+        setPetArrivalActivityArray([petArrivalActivity1, petArrivalActivity2, petArrivalActivity3]);
+
     }, [])
 
     return (
@@ -122,8 +126,8 @@ const Dashboard = () => {
                         ageDistributionData={ageDistributionData}
                         ageDistributionLabel={ageDistributionLabel}
                         genderDistributionData={genderDistributionData}
-                        genderDistributionLabel={genderDistributionLabel}
                         petAvgPriceArray={petAvgPriceArray}
+                        petArrivalActivityArray = {petArrivalActivityArray}
                     />
                     : <></>
                 }

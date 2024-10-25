@@ -17,7 +17,7 @@ export default {
                     DEFAULT: `#e3e98f`,
                 },
                 accent: {
-                    DEFAULT: `#deebe6`
+                    DEFAULT: `#d9e4dc`
                 }
             },
             fontFamily: {

@@ -46,9 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ location }) => {
     const [menuActive, setMenuActive] = useState<Boolean>(false)
 
     return (
-        <nav
-            className="px-4 pt-3 pb-0"
-        >
+        <nav className="px-4 pt-3 pb-0">
             <div className="flex justify-between items-center">
                 <button
                     className="aspect-square h-7"
@@ -58,19 +56,18 @@ const Navbar: React.FC<NavbarProps> = ({ location }) => {
                 <button className="aspect-square h-7"> <NotificationsIcon height='100%' /> </button>
             </div>
 
+            {/* Nav Menu */}
             <section className={`${menuActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} z-50 bg-black bg-opacity-15 min-h-screen min-w-full fixed top-0 left-0 transition-all duration-200`}>
                 <div
                     className={`${menuActive ? 'translate-x-0' : '-translate-x-full'} w-10/12 h-screen bg-background transition-all duration-300 fixed left-0 flex flex-col`}
                 >
                     <div
-                        className="grid grid-rows-2 items-center px-2 pr-3.5 py-5 border-b border-b-text border-opacity-15 bg-primary"
+                        className="grid grid-rows-2 items-center px-2 pr-3.5 py-5 border-b border-b-text border-opacity-15 bg-primary font-title text-background"
                         style={{ gridTemplateColumns: '0.50fr 1.10fr 0.20fr' }}
                     >
-                        <div
-                            className="bg-white bg-[url('/pictures/userProfile.png')] bg-center bg-cover h-full row-span-2 aspect-square rounded-full ml-auto mr-auto"
-                        />
-                        <h1 className="font-title text-2xl font-semibold text-background col-start-2 ">SnuggleStop</h1>
-                        <p className="font-title text-lg text-background col-start-2 capitalize flex mb-auto">{user}</p>
+                        <div className="bg-white bg-[url('/pictures/userProfile.png')] bg-center bg-cover h-full row-span-2 aspect-square rounded-full ml-auto mr-auto"/>
+                        <h1 className=" text-2xl font-semibold col-start-2 ">SnuggleStop</h1>
+                        <p className=" text-lg col-start-2 capitalize flex mb-auto">{user}</p>
                         <button
                             className="aspect-square h-5/6 ml-auto mr-1 row-start-1 col-start-3"
                             onClick={() => { setMenuActive(!menuActive) }}

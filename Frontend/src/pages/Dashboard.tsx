@@ -1,49 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import Navbar from "../components/Navbar.tsx";
 import Searchbar from "../components/Searchbar.tsx";
 import Picture from "../components/Picture.tsx";
 import Tabbar from "../components/Tabbar.tsx";
-import DonutChart from "../components/charts/DonutChart.tsx";
-import BarChart from "../components/charts/BarChart.tsx";
-import SmallDataCard from "../components/SmallDataCard.tsx";
-import LongDataCard from "../components/LongDataCard.tsx";
+import DashboardOverview from "../components/dashboard/DashboardOverview.tsx";
+import DashbardPets from "../components/dashboard/DashboardPets.tsx";
 
 // Modules
 import { AdoptionActivity } from "../components/modules/Activity.ts";
+import { Stock } from "../components/modules/Stock.ts";
 
-// Icons
-import PetIcon from "../components/icons/fillable/PetIcon.tsx";
-
-// FAKE DATA
-const petDistrubitionData = [20, 10, 5, 15, 15];
-const petDistrubitionLabel = ['Dogs', 'Cats', 'Birds', 'Fish', 'Others'];
-
-const supplyDistrubitionData = [28, 41, 37, 15, 22, 17, 39];
-const supplyDistrubitionLabel = ['Food', 'Toys', 'Health', 'Bedding', 'Cleaning', 'Grooming', 'Other']
-
-const totalPets = 10;
-const totalAdopters = 6;
-const totalSupplies = 112;
-const totalCaterogies = 20;
-
-const adoptionActivity1 = new AdoptionActivity('Betty', 'Jack', 'Pending', '10/22');
-const adoptionActivity2 = new AdoptionActivity('Alliesander', 'Kevin', 'Complete', '9/22');
-const adoptionActivity3 = new AdoptionActivity('Kevina', 'Allie', 'Pending', '6/19');
-
-const adoptionActivityArray = [adoptionActivity1, adoptionActivity2, adoptionActivity3]
-
+// Represent all tabs
+const tabElement: string[] = ['overview', 'pets', 'suppliers']
 
 const Dashboard = () => {
+    // State
+    const [totalPets, setTotalPets] = useState(0);
+    const [totalAdopters, setTotalAdopters] = useState(0);
+    const [totalSupplies, setTotalSupplies] = useState(0);
+    const [totalCategories, setTotalCategories] = useState(0);
+    const [petDistributionData, setPetDistributionData] = useState<number[]>([]);
+    const [petDistributionLabel, setPetDistributionLabel] = useState<string[]>([]);
+    const [supplyDistributionData, setSupplyDistributionData] = useState<number[]>([]);
+    const [supplyDistributionLabel, setSupplyDistributionLabel] = useState<string[]>([]);
+    const [adoptionActivityArray, setAdoptionActivityArray] = useState<AdoptionActivity[]>([]);
+    const [lowStockArray, setLowStockArray] = useState<Stock[]>([]);
+
     // Manage the active tab
     const [activeTab, setActiveTab] = useState<string>('overview');
 
-    // Represent all tabs
-    const tabElement: string[] = ['overview', 'pets', 'suppliers']
+    // Fake data
+    useEffect(() => {
+        // Dashboard
+        setTotalPets(15);
+        setTotalAdopters(10);
+        setTotalSupplies(132);
+        setTotalCategories(15);
+        setPetDistributionData([20, 10, 5, 15, 15]);
+        setPetDistributionLabel(['Dogs', 'Cats', 'Birds', 'Fish', 'Others']);
+        setSupplyDistributionData([28, 41, 37, 15, 22, 17, 39])
+        setSupplyDistributionLabel(['Food', 'Toys', 'Health', 'Bedding', 'Cleaning', 'Grooming', 'Other'])
+        const adoptionActivity1 = new AdoptionActivity('Betty', 'Jack', 'Pending', '10/22');
+        const adoptionActivity2 = new AdoptionActivity('Alliesander', 'Kevin', 'Complete', '9/22');
+        const adoptionActivity3 = new AdoptionActivity('Kevina', 'Allie', 'Pending', '6/19');
+        setAdoptionActivityArray([adoptionActivity1, adoptionActivity2, adoptionActivity3]);
+        const stock1 = new Stock('Food', 10);
+        const stock2 = new Stock('Toys', 11);
+        const stock3 = new Stock('Grooming', 12);
+        setLowStockArray([stock1, stock2, stock3])
+    }, [])
 
     return (
-        <main className="min-h-dvh bg-background text-primary relative pb-[8dvh]">
+        <main className="min-h-dvh bg-background text-primary relative pb-[8dvh] font-text">
             <Navbar location="Dashboard" />
             <header className="flex flex-col mt-3.5 mb-3.5 px-4 gap-3.5">
                 <Searchbar />
@@ -65,43 +75,24 @@ const Dashboard = () => {
             </header>
             <Picture fileName="dashboard_cat.png" altText="Dashboard image of a cat" circleAmount={3} circleSizes={[50, 35, 25]} circleLocations={[[50, 50], [70, 0], [80, 95]]} />
             <section className="my-3.5 px-6 gap-3.5 flex flex-col">
-                <h4 className="text-xl font-medium">Statistics</h4>
-                <ul className="grid grid-cols-2 gap-2 ">
-                    <SmallDataCard label={'Total Pets'} data={totalPets} />
-                    <SmallDataCard label={'Total Adopters'} data={totalAdopters} />
-                    <SmallDataCard label={'Total Supplies'} data={totalSupplies} />
-                    <SmallDataCard label={'Total Caterogies'} data={totalCaterogies} />
-                </ul>
-                <h4 className="text-xl font-medium">Pet Distrubition</h4>
-                <article className="aspect-square w-full bg-background shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] p-4 rounded-md">
-                    <DonutChart data={petDistrubitionData} labels={petDistrubitionLabel} />
-                </article>
-                <h4 className="text-xl font-medium">Supply Distrubition</h4>
-                <article className="aspect-square w-full bg-background shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] p-4 rounded-md">
-                    <BarChart data={supplyDistrubitionData} labels={supplyDistrubitionLabel} />
-                </article>
-                <div>
-                    <h4 className="text-xl font-medium mb-3">Recent Adoptions Activity</h4>
-                    <span className={`px-2 pl-10 flex-1 flex justify-between items-center gap-2 font-medium text-sm`}>
-                        <span className="flex-1 pl-2">Pet</span>
-                        <span className="text-center flex-1">Adopter</span>
-                        <span className="text-center flex-[1.25]">Status</span>
-                        <span className="text-end flex-1">Date</span>
-                    </span>
-                    <ul className="flex flex-col gap-2">
-                        {adoptionActivityArray.map((activity, index) => (
-                            <LongDataCard
-                                key={`adoption-activity-recent-${index}`}
-                                item={activity}
-                                Icon={PetIcon}
-                            />
-                        ))}
-                    </ul>
-                </div>
-                <h4 className="text-xl font-medium">Supplies Low in Stock</h4>
-                <div className="grid grid-cols-2 gap-2">
-
-                </div>
+                {activeTab === 'overview'
+                    ? <DashboardOverview
+                        totalPets={totalPets}
+                        totalAdopters={totalAdopters}
+                        totalSupplies={totalSupplies}
+                        totalCategories={totalCategories}
+                        petDistrubitionData={petDistributionData}
+                        petDistrubitionLabel={petDistributionLabel}
+                        supplyDistrubitionData={supplyDistributionData}
+                        supplyDistrubitionLabel={supplyDistributionLabel}
+                        adoptionActivityArray={adoptionActivityArray}
+                        lowStockArray={lowStockArray}
+                    />
+                    : <></>}
+                {activeTab === 'pets'
+                    ? <DashbardPets />
+                    : <></>
+                }
             </section>
 
             <Tabbar location="Dashboard" />

@@ -6,3 +6,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom */
+.scrollbar-hidden {
+    scrollbar-width: none; 
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}

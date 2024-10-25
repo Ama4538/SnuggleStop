@@ -2,7 +2,7 @@ const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
             {...props}
-            fill={props.fill || "#e0eee9"}
+            fill={props.fill || "#deebe6"}
             height={props.height || "250px"}
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"

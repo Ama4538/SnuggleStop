@@ -1,14 +1,14 @@
 class Activity {
-    status: string;
     date: string;
-
-    constructor(status: string, date: string) {
-        this.status = status;
+    status: string;
+    
+    constructor(date: string, status: string) {
         this.date = date;
+        this.status = status;
     }
 
     getDetail() {
-        return [this.status, this.date];
+        return [this.date, this.status];
     }
 }
 
@@ -16,14 +16,14 @@ class AdoptionActivity extends Activity {
     petName: string;
     adopterName: string;
 
-    constructor(petName: string, adopterName: string, status: string, date: string) {
-        super(status, date)
+    constructor(date: string, petName: string, adopterName: string, status: string) {
+        super(date, status)
         this.petName = petName;
         this.adopterName = adopterName;
     }
 
     getDetail() {
-        return [this.petName, this.adopterName, this.status, this.date];
+        return [this.date, this.petName, this.adopterName, this.status];
     }
 }
 

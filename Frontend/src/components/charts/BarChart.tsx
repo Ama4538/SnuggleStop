@@ -1,13 +1,15 @@
+// Imports
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart, CategoryScale, LinearScale, BarElement, Tooltip } from 'chart.js';
 
-Chart.register(CategoryScale, LinearScale, BarElement, Tooltip, ChartDataLabels);
-
+// Interface
 interface BarChartProps {
     data: number[];
     labels: string[];
 }
+
+Chart.register(CategoryScale, LinearScale, BarElement, Tooltip, ChartDataLabels);
 
 const BarChart: React.FC<BarChartProps> = ({ data, labels }) => {
     const barData = {
@@ -30,11 +32,13 @@ const BarChart: React.FC<BarChartProps> = ({ data, labels }) => {
         
         plugins: {
             datalabels: {
-                color: '#fffeff',
+                color: '#589a81',
                 font: {
-                    weight: 'bold' as const,
                     size: 14,
                 },
+                anchor: 'end' as const,
+            align: 'top' as const,  
+            offset: -3.5,  
             },
             legend: {
                 display: false,

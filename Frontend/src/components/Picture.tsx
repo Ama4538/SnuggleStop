@@ -1,3 +1,4 @@
+// Interface
 interface PictureProps {
     // Location of picture from public/pictures
     fileName: string;

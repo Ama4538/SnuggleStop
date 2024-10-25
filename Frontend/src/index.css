@@ -15,3 +15,7 @@
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
+
+.stats-heading {
+    @apply text-xl font-semibold;
+}

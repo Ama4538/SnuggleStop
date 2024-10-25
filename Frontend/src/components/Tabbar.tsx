@@ -4,6 +4,7 @@ import PetIcon from "./icons/fillable/PetIcon.tsx"
 import InventoryIcon from "./icons/fillable/InventoryIcon.tsx"
 import SupplierIcon from "./icons/fillable/SupplierIcon.tsx"
 
+// Interface
 interface TabbarProps {
     location: string;
 }

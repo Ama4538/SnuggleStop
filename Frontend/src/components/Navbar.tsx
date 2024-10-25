@@ -16,6 +16,7 @@ import SettingsIcon from "./icons/fillable/SettingsIcon.tsx";
 // Props
 import { FillableIconProps } from "./icons/IconProps.ts";
 
+// Interface
 interface NavbarProps {
     location: string;
 }

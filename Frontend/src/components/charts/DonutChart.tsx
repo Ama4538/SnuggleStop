@@ -1,13 +1,15 @@
+// Import
 import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 
-Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
-
+// Interface
 interface DonutChartProps {
     data: number[];
     labels: string[];
 }
+
+Chart.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const DonutChart: React.FC<DonutChartProps> = ({ data, labels }) => {
     const chartData = {

@@ -6,22 +6,23 @@ import LongDataCard from "../LongDataCard.tsx";
 
 // Modules
 import { AdoptionActivity } from "../modules/Activity.ts";
-import { Stock } from "../modules/Stock.ts";
+import { Item } from "../modules/Item.ts";
 
 // Icons
 import PetIcon from "../icons/fillable/PetIcon.tsx";
 
+// Interface
 interface DashboardOverview {
     totalPets: number;
     totalAdopters: number;
     totalSupplies: number;
     totalCategories: number;
-    petDistrubitionData: number[];
-    petDistrubitionLabel: string[];
-    supplyDistrubitionData: number[];
-    supplyDistrubitionLabel: string[];
+    petDistributionData: number[];
+    petDistributionLabel: string[];
+    supplyDistributionData: number[];
+    supplyDistributionLabel: string[];
     adoptionActivityArray: AdoptionActivity[];
-    lowStockArray: Stock[];
+    lowStockArray: Item[];
 }
 
 const DashboardOverview: React.FC<DashboardOverview> = ({
@@ -29,37 +30,37 @@ const DashboardOverview: React.FC<DashboardOverview> = ({
     totalAdopters,
     totalSupplies,
     totalCategories,
-    petDistrubitionData,
-    petDistrubitionLabel,
-    supplyDistrubitionData,
-    supplyDistrubitionLabel,
+    petDistributionData,
+    petDistributionLabel,
+    supplyDistributionData,
+    supplyDistributionLabel,
     adoptionActivityArray,
     lowStockArray
 }) => {
     return (
         <>
-            <h4 className="text-xl font-semibold">Statistics</h4>
+            <h4 className="stats-heading">Statistics</h4>
             <ul className="grid grid-cols-2 gap-2 ">
                 <SmallDataCard label={'Total Pets'} data={totalPets} />
                 <SmallDataCard label={'Total Adopters'} data={totalAdopters} />
                 <SmallDataCard label={'Total Supplies'} data={totalSupplies} />
                 <SmallDataCard label={'Total Categories'} data={totalCategories} />
             </ul>
-            <h4 className="text-xl font-semibold">Pet Distrubition</h4>
+            <h4 className="stats-heading">Pet Distribution</h4>
             <article className="aspect-square w-full bg-background shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] p-4 rounded-md flex justify-center items-center">
-                {petDistrubitionData.length > 0 || petDistrubitionLabel.length > 0
-                    ? <DonutChart data={petDistrubitionData} labels={petDistrubitionLabel} />
-                    : <h4 className="text-xl font-semibold">No Data Present</h4>
+                {petDistributionData.length > 0 || petDistributionLabel.length > 0
+                    ? <DonutChart data={petDistributionData} labels={petDistributionLabel} />
+                    : <h4 className="stats-heading">No Data Present</h4>
                 }
             </article>
-            <h4 className="text-xl font-semibold">Supply Distrubition</h4>
+            <h4 className="stats-heading">Supply Distribution</h4>
             <article className="aspect-square w-full bg-background shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] p-4 rounded-md flex justify-center items-center">
-                {supplyDistrubitionData.length > 0 || supplyDistrubitionLabel.length > 0
-                    ? <BarChart data={supplyDistrubitionData} labels={supplyDistrubitionLabel} />
-                    : <h4 className="text-xl font-semibold">No Data Present</h4>
+                {supplyDistributionData.length > 0 || supplyDistributionLabel.length > 0
+                    ? <BarChart data={supplyDistributionData} labels={supplyDistributionLabel} />
+                    : <h4 className="stats-heading">No Data Present</h4>
                 }
             </article>
-            <h4 className="text-xl font-semibold">Recent Adoptions Activity</h4>
+            <h4 className="stats-heading">Recent Adoptions Activity</h4>
             <div>
                 {adoptionActivityArray.length > 0 ? (
                     <>
@@ -83,14 +84,14 @@ const DashboardOverview: React.FC<DashboardOverview> = ({
                     <span className="flex justify-center text-lg font-medium">No Recent Adoptions</span>
                 )}
             </div>
-            <h4 className="text-xl font-semibold">Supplies Low in Stock</h4>
+            <h4 className="stats-heading">Supplies Low in Stock</h4>
             {lowStockArray.length > 0 ? (
                 <ul className="flex overflow-auto gap-3 scrollbar-hidden">
-                    {lowStockArray.map((stock, index) => (
+                    {lowStockArray.map((Item, index) => (
                         <SmallDataCard
                             key={`Dashboard_Overview_Low_Stock_${index}`}
-                            label={stock.getName()}
-                            data={stock.getAmount()} alt={true} />
+                            label={Item.getName()}
+                            data={Item.getAmount()} alt={true} />
                     ))}
                 </ul>
             ) : (

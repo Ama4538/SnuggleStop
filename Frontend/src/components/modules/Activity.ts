@@ -21,7 +21,7 @@ class AdoptionActivity extends Activity {
     status: string;
 
     constructor(date: string, name: string, adopterName: string, status: string) {
-        super(date ,name)
+        super(date, name)
         this.adopterName = adopterName;
         this.status = status;
     }
@@ -52,12 +52,31 @@ class PetArrivalActivity extends Activity {
     getBreed() {
         return this.breed;
     }
+}
 
+class SupplyArrivalActivity extends Activity {
+    supplier: string;
+    amount: number;
+
+    constructor(date: string, name: string, supplier: string, amount: number) {
+        super(date, name)
+        this.supplier = supplier;
+        this.amount = amount;
+    }
+
+    getSupplier() {
+        return this.supplier;
+    }
+
+    getAmount() {
+        return this.amount
+    }
 }
 
 export {
     Activity,
     AdoptionActivity,
-    PetArrivalActivity
+    PetArrivalActivity,
+    SupplyArrivalActivity
 };
 

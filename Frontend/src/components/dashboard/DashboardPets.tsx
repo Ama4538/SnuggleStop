@@ -1,8 +1,8 @@
 // Components
 import DonutChart from "../charts/DonutChart.tsx";
 import BarChart from "../charts/BarChart.tsx";
-import SmallDataCard from "../SmallDataCard.tsx";
-import LongDataCard from "../LongDataCard.tsx";
+import SmallDataCard from "../data_representation/SmallDataCard.tsx";
+import LongDataCard from "../data_representation/LongDataCard.tsx";
 
 // Modules
 import { Item } from "../modules/Item.ts";
@@ -41,7 +41,7 @@ const DashbardPets: React.FC<DashbardPets> = ({
 }) => {
     return (
         <>
-            <h4 className="stats-heading">Statistics</h4>
+            <h4 className="stats-heading">Pet Statistics</h4>
             <ul className="grid grid-cols-2 gap-2 ">
                 <SmallDataCard className={'col-span-2 flex justify-between items-center py-6 px-3'} headerClass={'text-2xl'} label={'Total Pets'} data={totalPets} />
                 <SmallDataCard label={'Total Species'} data={totalSpecies} />
@@ -57,7 +57,7 @@ const DashbardPets: React.FC<DashbardPets> = ({
             <h4 className="stats-heading">Age Distribution (Years)</h4>
             <article className="aspect-square w-full bg-background shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] p-4 rounded-md flex justify-center items-center">
                 {ageDistributionData.length > 0 || ageDistributionLabel.length > 0
-                    ? <BarChart data={ageDistributionData} labels={ageDistributionLabel}/>
+                    ? <BarChart data={ageDistributionData} labels={ageDistributionLabel} />
                     : <h4 className="stats-heading">No Data Present</h4>
                 }
             </article>
@@ -82,9 +82,8 @@ const DashbardPets: React.FC<DashbardPets> = ({
             ) : (
                 <span className="flex justify-center text-lg font-medium">No Low Supplies</span>
             )}
-            
             <div>
-            <h4 className="stats-heading mb-3">Recent Arrivals</h4>
+                <h4 className="stats-heading mb-3">Recent Arrivals</h4>
                 {petArrivalActivityArray.length > 0 ? (
                     <>
                         <span className='px-2 pl-8 flex-1 flex justify-between items-center gap-2 font-semibold text-sm text-center'>
@@ -99,7 +98,7 @@ const DashbardPets: React.FC<DashbardPets> = ({
                                 return (
                                     <LongDataCard
                                         key={`adoption-activity-recent-${index}`}
-                                        type ={'adoptionActivity'}
+                                        type={'adoptionActivity'}
                                         data={activityData}
                                         Icon={PetIcon}
                                     />
@@ -108,7 +107,7 @@ const DashbardPets: React.FC<DashbardPets> = ({
                         </ul>
                     </>
                 ) : (
-                    <span className="flex justify-center text-lg font-medium">No Recent Adoptions</span>
+                    <span className="flex justify-center text-lg font-medium">No Recent Arrivals</span>
                 )}
             </div>
 

@@ -29,7 +29,7 @@ const Picture: React.FC<PictureProps> = ({ fileName, altText, circleAmount, circ
     const circleArray = Array.from({ length: circleAmount }, (_, index) => index);
 
     return (
-        <div className="aspect-[1.15/1] bg-primary relative overflow-hidden">
+        <div className="aspect-[1.15/1] md:aspect-[1.50/1]  bg-primary relative overflow-hidden">
             {circleArray.map(circle => (
                     <div
                         key={`circle-for-${fileName}-number-${circle}`}
@@ -44,7 +44,7 @@ const Picture: React.FC<PictureProps> = ({ fileName, altText, circleAmount, circ
                     ></div>
                 ))}
             <img
-                className="w-full h-full object-cover absolute"
+                className="w-full h-full object-cover absolute md:left-1/2 md:-translate-x-1/2 md:w-9/12"
                 src={`/pictures/${fileName}`}
                 alt={altText}
             />

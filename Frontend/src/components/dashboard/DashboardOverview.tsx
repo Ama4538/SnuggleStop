@@ -1,8 +1,8 @@
 // Components
 import DonutChart from "../charts/DonutChart.tsx";
 import BarChart from "../charts/BarChart.tsx";
-import SmallDataCard from "../SmallDataCard.tsx";
-import LongDataCard from "../LongDataCard.tsx";
+import SmallDataCard from "../data_representation/SmallDataCard.tsx";
+import LongDataCard from "../data_representation/LongDataCard.tsx";
 
 // Modules
 import { AdoptionActivity } from "../modules/Activity.ts";

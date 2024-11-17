@@ -23,7 +23,6 @@ const LongDataCard: React.FC<LongDataCard> = ({ type, data, Icon, alt = false })
                     )
                 })}
             </span>
-
         </li>
     )
 }
